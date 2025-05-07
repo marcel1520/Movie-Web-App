@@ -25,7 +25,7 @@ class SQLiteDataManager(DataManagerInterface):
 
     def add_movie(self, user_id, movie_data):
         movie = Movie(user_id=user_id, **movie_data)
-        db.sessio.add(movie)
+        db.session.add(movie)
         db.session.commit()
         return movie
 
