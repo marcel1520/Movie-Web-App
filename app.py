@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, url_for
+from flask import Flask, request, jsonify
 from data_manager import SQLiteDataManager
 
 app = Flask(__name__)
@@ -12,12 +12,14 @@ data_manager = SQLiteDataManager(app)
 # helper function movie serialization
 def serialize_movie(movie):
     return {
-        'id': movie.id,
+        'movie_id': movie.id,
         'title': movie.title,
         'release_year': movie.release_year,
         'genre': movie.genre,
         'director': movie.director,
-        'rating': movie.rating
+        'rating': movie.rating,
+        'user_id': movie.user.id
+
     }
 
 # helper function user serialization
